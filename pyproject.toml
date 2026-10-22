@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quantqueue"
+version = "0.1.0"
+description = "Async priority scheduling and caching for quantum workloads"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+qiskit = ["qiskit>=2.0", "qiskit-aer>=0.15"]
+dev = ["pytest>=8", "pytest-asyncio>=0.23"]
+
+[tool.setuptools.packages.find]
+include = ["quantqueue*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
