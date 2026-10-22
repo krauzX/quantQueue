@@ -11,3 +11,10 @@ def test_key_changes_with_config():
     a = TranspilationCache.make_key({"qubits": 2}, {"basis": ["x"]})
     b = TranspilationCache.make_key({"qubits": 2}, {"basis": ["h"]})
     assert a != b
+
+def test_corrupted_cache_file_returns_none(tmp_path):
+    cache = TranspilationCache(tmp_path)
+    corrupted_file = tmp_path / "corrupted_key.json"
+    corrupted_file.write_text("{this is not valid json", encoding="utf-8")
+    assert cache.get("corrupted_key") is None
+

@@ -23,7 +23,8 @@ async def run_benchmark(circuits: int = 100, workers: int = 4, mode: str = "prio
             "success_rate_percent": round(successful / circuits * 100, 2) if circuits else 100}
 
 def main():
-    import argparse, json
+    import argparse
+    import json
     parser = argparse.ArgumentParser()
     parser.add_argument("--circuits", type=int, default=100)
     parser.add_argument("--workers", type=int, default=4)

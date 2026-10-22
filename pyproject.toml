@@ -12,10 +12,28 @@ dependencies = []
 
 [project.optional-dependencies]
 qiskit = ["qiskit>=2.0", "qiskit-aer>=0.15"]
-dev = ["pytest>=8", "pytest-asyncio>=0.23"]
+dev = ["pytest>=8", "pytest-asyncio>=0.23", "ruff>=0.8"]
 
 [tool.setuptools.packages.find]
 include = ["quantqueue*"]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+]
+ignore = [
+    "E501",  # line length handled by formatter
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__tests__/*" = ["E501"]
+
